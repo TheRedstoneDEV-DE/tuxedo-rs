@@ -120,7 +120,7 @@ impl FanRuntimeData {
     #[tracing::instrument(level = "trace", skip(self))]
     /// Adds entries to history ring buffer.
     fn update_temp(&mut self) -> u8 {
-        match self.io.get_fan_temperature(self.fan_idx) {
+        match self.io.get_fan_temperature(0) {
             Ok(temp) => {
                 self.temp_history.update(temp);
                 temp
